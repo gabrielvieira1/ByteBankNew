@@ -1,6 +1,7 @@
 ﻿using ByteBankNew.Funcionarios;
 using ByteBankNew.Sistema;
 using System;
+using System.Text.RegularExpressions;
 
 namespace ByteBankNew
 {
@@ -8,12 +9,47 @@ namespace ByteBankNew
   {
     static void Main(string[] args)
     {
-      CalcularBonificacao();
-      UsarSistema();
+      TratarStrings();
+
+    }
+
+    public static void TratarStrings()
+    {
+      string urlParametros = "http://www.bytebank.com/cambio?nome=Gabriel&moedaOrigem=real&moedaDestino=dolar&valor=1500";
+      ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(urlParametros);
+
+      string usuario = extratorDeValores.GetParametro("nome");
+      string msg = "Olá nome";
+      Console.WriteLine(msg.Replace("nome", usuario) + "\n");
+
+      string valorMoedaDestino = extratorDeValores.GetParametro("moedaDestino");
+      Console.WriteLine("Valor de moedaDestino: " + valorMoedaDestino);
+
+      string valorMoedaOrigem = extratorDeValores.GetParametro("moedaOrigem");
+      Console.WriteLine("Valor de moedaOrigem: " + valorMoedaOrigem);
+
+      string valor = extratorDeValores.GetParametro("VALOR");
+      Console.WriteLine("Valor: " + valor);
+
 
       Console.ReadLine();
 
+
+      // Testando o StartsWith e EndsWith
+      string urlTeste = "https://www.bytebank.com/cambio";
+      int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
+
+
+      Console.WriteLine(urlTeste.StartsWith("https://www.bytebank.com"));
+      Console.WriteLine(urlTeste.EndsWith("cambio/"));
+
+
+      Console.WriteLine(urlTeste.Contains("ByteBank"));
+
+
+      Console.ReadLine();
     }
+
     public static void UsarSistema()
     {
       SistemaInterno sistemaInterno = new SistemaInterno();
