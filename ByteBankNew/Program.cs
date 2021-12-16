@@ -9,13 +9,22 @@ namespace ByteBankNew
   {
     static void Main(string[] args)
     {
-      TratarStrings();
+      try
+      {
+        TratarStrings();
 
+      }
+      catch (ArgumentException ex)
+      {
+        Console.WriteLine("Argumento com problema: " + ex.ParamName);
+        Console.WriteLine(ex.Message);
+      }
+      Console.ReadLine();
     }
 
     public static void TratarStrings()
     {
-      string urlParametros = "http://www.bytebank.com/cambio?nome=Gabriel&moedaOrigem=real&moedaDestino=dolar&valor=1500";
+      string urlParametros = "https://www.bytebank.com/cambio?nome=Gabriel&moedaOrigem=real&moedaDestino=dolar&valor=1500";
       ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(urlParametros);
 
       string usuario = extratorDeValores.GetParametro("nome");
@@ -23,31 +32,38 @@ namespace ByteBankNew
       Console.WriteLine(msg.Replace("nome", usuario) + "\n");
 
       string valorMoedaDestino = extratorDeValores.GetParametro("moedaDestino");
-      Console.WriteLine("Valor de moedaDestino: " + valorMoedaDestino);
+      Console.WriteLine("Moeda destino: " + valorMoedaDestino + "\n");
 
       string valorMoedaOrigem = extratorDeValores.GetParametro("moedaOrigem");
-      Console.WriteLine("Valor de moedaOrigem: " + valorMoedaOrigem);
+      Console.WriteLine("Moeda origem: " + valorMoedaOrigem + "\n");
 
       string valor = extratorDeValores.GetParametro("VALOR");
-      Console.WriteLine("Valor: " + valor);
+      Console.WriteLine("Valor: " + valor + "\n");
 
 
-      Console.ReadLine();
+      //string urlTeste = "https://www.bytebank.com/teste?nome=Gabriel&moedaOrigem=real&moedaDestino=dolar&valor=1500";
+      //ExtratorValorDeArgumentosURL extratorDeValores2 = new ExtratorValorDeArgumentosURL(urlTeste);
+      //Console.WriteLine(extratorDeValores2);
 
+      //UsuarioCambio usuarioCambio = new UsuarioCambio("Gabriel", "123.123.232-23");
 
-      // Testando o StartsWith e EndsWith
-      string urlTeste = "https://www.bytebank.com/cambio";
-      int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
+      //UsuarioCambio usuarioCambio2 = new UsuarioCambio("Gabriel", "123.123.232-23");
 
+      //Desenvolvedor desenvolvedor = new Desenvolvedor("123.123.232-23");
+      //desenvolvedor.Nome = "Gabriel";
 
-      Console.WriteLine(urlTeste.StartsWith("https://www.bytebank.com"));
-      Console.WriteLine(urlTeste.EndsWith("cambio/"));
+      //if (usuarioCambio.Equals(usuarioCambio2))
+      //{
+      //  Console.WriteLine("Você só poderá usar o nosso cambio daqui a 10 minutos");
+      //  Console.WriteLine(usuarioCambio2 + "\n");
+      //}
 
+      //if (!usuarioCambio.Equals(desenvolvedor))
+      //{
+      //  Console.WriteLine("Funcionários não podem usar o cambio");
+      //  Console.WriteLine(desenvolvedor);
+      //}
 
-      Console.WriteLine(urlTeste.Contains("ByteBank"));
-
-
-      Console.ReadLine();
     }
 
     public static void UsarSistema()

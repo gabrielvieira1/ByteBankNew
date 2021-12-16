@@ -12,9 +12,13 @@ namespace ByteBankNew
     public ExtratorValorDeArgumentosURL(string url)
     {
       if (String.IsNullOrEmpty(url))
-      {
         throw new ArgumentException("O argumento url não pode ser nulo ou vazio.", nameof(url));
-      }
+
+      if (!url.StartsWith("https://www.bytebank.com"))
+        throw new ArgumentException("A url só pode ser do bytebank.", nameof(url));
+
+      if (!url.Contains("cambio"))
+        throw new ArgumentException("Você deve acessar a área de cambio.", nameof(url));
 
       int indiceInterrogacao = url.IndexOf('?');
       _argumentos = url.Substring(indiceInterrogacao + 1);

@@ -17,5 +17,10 @@ namespace ByteBankNew.Funcionarios
     {
       return Salario * 0.1;
     }
+
+    public override string ToString()
+    {
+      return $"Nome do desenvolvedor: {Nome}, CPF: {CPF}";
+    }
   }
 }
