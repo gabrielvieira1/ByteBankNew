@@ -10,7 +10,7 @@ namespace ByteBankNew
   {
     public string Senha { get; set; }
 
-    protected FuncionarioAutenticavel(double salario, string cpf) : base(salario, cpf) { }
+    protected FuncionarioAutenticavel(double salario, string nome, string cpf) : base(salario, nome, cpf) { }
 
     public bool Autenticar(string senha)
     {

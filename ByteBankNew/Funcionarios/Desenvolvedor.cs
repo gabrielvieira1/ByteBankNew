@@ -6,7 +6,7 @@ namespace ByteBankNew.Funcionarios
 {
   public class Desenvolvedor : Funcionario
   {
-    public Desenvolvedor(string cpf) : base(3000, cpf) { }
+    public Desenvolvedor(string nome, string cpf) : base(3000, nome, cpf) { }
 
     public override void AumentarSalario()
     {
@@ -20,7 +20,7 @@ namespace ByteBankNew.Funcionarios
 
     public override string ToString()
     {
-      return $"Nome do desenvolvedor: {Nome}, CPF: {CPF}";
+      return $"Desenvolvedor(a): {Nome}, CPF: {CPF}, Salário: {Salario}";
     }
   }
 }

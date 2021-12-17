@@ -7,7 +7,7 @@ namespace ByteBankNew.Funcionarios
 {
   public class Diretor : FuncionarioAutenticavel
   {
-    public Diretor(string cpf) : base(5000, cpf) { }
+    public Diretor(string nome, string cpf) : base(5000, nome, cpf) { }
 
     public override void AumentarSalario()
     {
@@ -17,6 +17,10 @@ namespace ByteBankNew.Funcionarios
     public override double GetBonificacao()
     {
       return Salario * 0.5;
+    }
+    public override string ToString()
+    {
+      return $"Diretor(a): {Nome}, CPF: {CPF}, Salário: {Salario}";
     }
   }
 }

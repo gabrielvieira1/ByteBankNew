@@ -29,10 +29,10 @@ namespace ByteBankNew
     public string GetParametro(string nomeParametro)
     {
       nomeParametro = nomeParametro.ToUpper();
-      string argumentoEmCaixaAlta = _argumentos.ToUpper();
+      string argumentosEmCaixaAlta = _argumentos.ToUpper();
 
       string termo = nomeParametro + "=";
-      int indiceTermo = argumentoEmCaixaAlta.IndexOf(termo);
+      int indiceTermo = argumentosEmCaixaAlta.IndexOf(termo);
 
       string resultado = _argumentos.Substring(indiceTermo + termo.Length);
       int indiceEComercial = resultado.IndexOf('&');

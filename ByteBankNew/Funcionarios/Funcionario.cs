@@ -12,9 +12,10 @@ namespace ByteBankNew.Funcionarios
     public string CPF { get; private set; }
     public double Salario { get; protected set; }
 
-    public Funcionario(double salario, string cpf)
+    public Funcionario(double salario, string nome, string cpf)
     {
       TotalDeFuncionarios++;
+      Nome = nome;
       CPF = cpf;
       Salario = salario;
     }
